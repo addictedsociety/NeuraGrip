@@ -1,0 +1,61 @@
+# 🐍 Python & Virtuelle Umgebung
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+pip-log.txt
+pip-delete-this-directory.txt
+
+# 📦 Paketverwaltung
+*.egg-info/
+*.egg
+*.whl
+dist/
+build/
+
+# 🔧 VSCode & IDEs
+.vscode/
+.idea/
+*.sublime-workspace
+
+# 🔄 Git & Logs
+.DS_Store
+*.log
+*.out
+*.pid
+*.swp
+*.swo
+*.swn
+
+# 📸 OpenCV & Temp-Dateien
+*.jpg
+*.png
+*.bmp
+*.mp4
+*.avi
+*.mov
+*.mkv
+frames/
+output/
+captures/
+
+# 🛑 Debugging & Core Dumps
+debug.log
+*.stackdump
+*.core
+*.dmp
+
+# 🔥 Raspberry Pi-spezifische Dateien
+*.bak
+*.swp
+*.swap
+*.old
+lost+found/
+
+# 🌍 Node.js (Falls du Node benutzt)
+node_modules/
+npm-debug.log
+yarn-error.log
