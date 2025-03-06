@@ -7,8 +7,10 @@ from time import sleep
 from LCD.PCF8574 import PCF8574_GPIO
 from LCD.Adafruit_LCD1602 import Adafruit_CharLCD
 
+
 # --- Display-Server setzen ---
 os.environ["DISPLAY"] = ":0"  # Setzt den Display-Server für X11
+
 
 # --- Globale Variablen ---
 prev_x, prev_y = -1, -1  # Speichert vorherige Gesichtswerte
@@ -17,6 +19,7 @@ prev_x, prev_y = -1, -1  # Speichert vorherige Gesichtswerte
 ledPin_red = 17
 ledPin_blue = 27
 ledPin_green = 22
+
 
 # --- Servo-Motor Einstellungen ---
 OFFSET_DUTY = 0.5
@@ -85,9 +88,12 @@ def loop():
 
     # Kamera-Initialisierung
     cap = cv2.VideoCapture(0, cv2.CAP_V4L2)
-    cap.set(cv2.CAP_PROP_FPS, 30)  
-    cap.set(cv2.CAP_PROP_FRAME_WIDTH, 640)
+    cap.set(cv2.CAP_PROP_BUFFERSIZE, 1)  # Buffer reduzieren für weniger Verzögerung
+    cap.set(cv2.CAP_PROP_FOURCC, cv2.VideoWriter_fourcc(*'MJPG'))  # Schnelleren Codec setzen
+    cap.set(cv2.CAP_PROP_FPS, 60)  # Setzt die FPS auf 60 (so hoch wie möglich)
+    cap.set(cv2.CAP_PROP_FRAME_WIDTH, 640)  # Höhere Auflösung = mehr Details
     cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 480)
+
 
     if not cap.isOpened():
         print("❌ Kamera konnte nicht geöffnet werden!")
