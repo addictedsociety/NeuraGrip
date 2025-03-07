@@ -1,12 +1,14 @@
 import cv2
 
-# Lade das Gesichtserkennungsmodell
-face_cascade = cv2.CascadeClassifier("haarcascade_frontalface_default.xml")
+# Lade das LBP-Modell für die Gesichtserkennung (schneller als Haarcascades)
+face_cascade = cv2.CascadeClassifier("models/lbpcascade_frontalface.xml")
 
 def detect_faces(frame):
-    """Erkennt Gesichter im Bild und gibt die Bounding-Box zurück."""
-    gray_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+    """Erkennt Gesichter im Bild mit LBP und gibt Bounding-Boxes zurück."""
+    gray_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)  # In Graustufen umwandeln
     faces = face_cascade.detectMultiScale(
-        gray_frame, scaleFactor=1.2, minNeighbors=3, minSize=(50, 50), flags=cv2.CASCADE_SCALE_IMAGE
+        gray_frame, scaleFactor=1.1, minNeighbors=5, minSize=(50, 50)
     )
-    return faces
+    
+    return faces  # Gibt eine Liste mit Bounding-Box-Koordinaten zurück
+

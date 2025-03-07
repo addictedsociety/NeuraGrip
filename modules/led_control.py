@@ -6,16 +6,13 @@ class LED:
         self.green = green_pin
 
         GPIO.setup(self.red, GPIO.OUT)
-        GPIO.setup(self.blue, GPIO.OUT)
         GPIO.setup(self.green, GPIO.OUT)
 
     def update(self, faces):
         """Schaltet die LEDs basierend auf der Anzahl der erkannten Gesichter."""
-        if len(faces) == 0:
-            GPIO.output(self.red, GPIO.HIGH)
-            GPIO.output(self.blue, GPIO.LOW)
-            GPIO.output(self.green, GPIO.LOW)
-        else:
+        if len(faces) >= 1:
             GPIO.output(self.red, GPIO.LOW)
             GPIO.output(self.green, GPIO.HIGH)
-        
+        else:
+            GPIO.output(self.red, GPIO.HIGH)
+            GPIO.output(self.green, GPIO.LOW)
