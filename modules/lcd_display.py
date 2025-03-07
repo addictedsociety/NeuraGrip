@@ -1,5 +1,6 @@
-from LCD.PCF8574 import PCF8574_GPIO
+
 from LCD.Adafruit_LCD1602 import Adafruit_CharLCD
+from LCD.PCF8574 import PCF8574_GPIO
 
 class LCD:
     def __init__(self):

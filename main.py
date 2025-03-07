@@ -1,9 +1,10 @@
 import cv2
 import os
-from modules.face_detection import detect_faces
 from modules.servo_control import Servo
 from modules.lcd_display import LCD
 from modules.led_control import LED
+from modules.face_detection import detect_faces
+
 
 # --- Display-Server setzen ---
 os.environ["DISPLAY"] = ":0"  # Setzt den Display-Server für X11
